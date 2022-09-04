@@ -19,7 +19,9 @@ const ProductForm = (props) => {
                 console.log(res.data);
                 setProducts([...products, res.data])
             })
-            .catch(err=>console.log(err))
+            .catch(err=>{console.log(err)})
+        // why doesnt setTitle('') work?
+        e.target.reset()
     }
     
     return (
@@ -29,7 +31,7 @@ const ProductForm = (props) => {
                 <input type="text" name='title' onChange = {(e)=>setTitle(e.target.value)}/>
 
                 <label htmlFor='price'>Price</label>
-                <input type="text" name="price" onChange = {(e)=>setPrice(e.target.value)}/>
+                <input type="number" name="price" onChange = {(e)=>setPrice(e.target.value)}/>
 
                 <label htmlFor='description'>Description</label>
                 <input type="text" name="description" onChange = {(e)=>setDescription(e.target.value)}/>

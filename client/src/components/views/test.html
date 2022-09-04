@@ -1,0 +1,27 @@
+<table>
+    <thead>
+        <tr>
+            <td>Product name</td>
+            <td>Price</td>
+            <td>Description</td>
+            <td>View/Edit/Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        {
+            products.map((product, index)=>{
+                return
+                <tr key={index}>
+                    <td>{product.title}</td>
+                    <td>{product.price}</td>
+                    <td>{product.description}</td>
+                    <td>
+                        <Link to={`/products/${product._id}`} >View </Link>
+                        <Link to={"/products/edit/" + product._id}>Edit </Link>
+                        <button onClick={(e)=>{deleteProduct(product._id)}}>Delete</button>
+                    </td>
+                </tr>
+            })
+        }
+    </tbody>
+</table>
