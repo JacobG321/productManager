@@ -6,7 +6,7 @@ const Main = (props) => {
 
     const [products, setProducts] = useState([])
     const removeFromDom = productId => {
-        setProducts(products.filter(person => products._id !== productId))
+        setProducts(products.filter(product => products._id !== productId))
     }
 
     return (
