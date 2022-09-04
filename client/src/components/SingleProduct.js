@@ -11,8 +11,9 @@ const SingleProduct = (props) => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/product/" + id)
             .then( res => {
+                const response = res.data.product[0]
                 console.log(res.data.product[0])
-                setProduct(res.data.product[0])
+                setProduct(response)
             })
             .catch( err => console.log(err))
     }, [])

@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Main from './components/views/Main'
-import ProductForm from './components/SingleProduct';
 import SingleProduct from './components/SingleProduct';
+import Update from './components/Update';
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
           
           <Route element={<Main/>} path="/"/>
           <Route element={<SingleProduct/>} path="/products/:id" />
-          
+          <Route element={<Update/>} path="/products/edit/:id" />
         </Routes>
       </BrowserRouter>
     </div>

@@ -40,6 +40,7 @@ const ProductController = {
 
 
     // Update, run validators runs the validations on update
+    // new:true indicates that we want the returned document to contain the newly updated document instead of the default mongoose action of sending back the original document (prior to updating).
     update:(req,res)=>{
         Product.findOneAndUpdate({_id:req.params.id},req.body,{new:true,runValidators:true})
         .then((product)=>{
