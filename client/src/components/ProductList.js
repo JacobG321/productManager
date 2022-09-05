@@ -21,8 +21,9 @@ const ProductList = (props) => {
 
     const deleteProduct = (productId) => {
         axios.delete('http://localhost:8000/api/product/' + productId)
-            .then(res => {
-                setProducts(products.filter(product => product._id !== productId))
+            .then(() => {
+                console.log(productId)
+                setProducts(products.filter(product => product._id != productId))
             })
             .catch(err => console.log(err))
     }

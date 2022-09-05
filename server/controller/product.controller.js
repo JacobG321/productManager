@@ -53,7 +53,7 @@ const ProductController = {
 
     // Delete
     delete:(req,res)=>{
-        Product.findOneAndDelete(req.params.id)
+        Product.findOneAndDelete({_id:req.params.id})
         .then((product)=>{
             res.status(200).json({deletedproduct:product})
         })
