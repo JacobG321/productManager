@@ -7,7 +7,7 @@ const Update = (props) => {
 
     const {id} = useParams()
     const [title, setTitle] = useState("")
-    const [price, setPrice] = useState(Number)
+    const [price, setPrice] = useState(0)
     const [description, setDescription] = useState("")
     const navigate = useNavigate()
 

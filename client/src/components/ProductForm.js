@@ -3,30 +3,35 @@ import axios from 'axios';
 const ProductForm = (props) => {
     const {products, setProducts} = props
     const [title, setTitle] = useState(""); 
-    const [price, setPrice] = useState("");
+    const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
+    const [errors, setErrors] = useState([])
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        // make sure you change axios post
         axios.post('http://localhost:8000/api/product', { 
             title,
             price,
             description
         })
             .then(res=>{
-                console.log(res);
                 console.log(res.data);
                 setProducts([...products, res.data])
             })
-            .catch(err=>{console.log(err)})
-        // why doesnt setTitle('') work?
+            .catch(err=>{
+                const errorResponse = err.response.data.errors
+                const errorArray = []
+                for (const key of Object.keys(errorResponse)) {
+                    errorArray.push(errorResponse[key].message)
+                }
+                setErrors(errorArray)
+            })
         e.target.reset()
     }
     
     return (
         <form onSubmit={onSubmitHandler}>
-
+                {errors.map((err, index) => <p key={index}>{err}</p>)}
                 <label htmlFor='title'>Title</label>
                 <input type="text" name='title' onChange = {(e)=>setTitle(e.target.value)}/>
 

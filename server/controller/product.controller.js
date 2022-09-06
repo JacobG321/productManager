@@ -10,7 +10,7 @@ const ProductController = {
             res.status(201).json({product:product})
         })
         .catch((err)=>{
-            res.status(400).json({message:"There has been an error", error:err})
+            res.status(400).json(err)
         })
     },
 
