@@ -17,6 +17,7 @@ const ProductForm = (props) => {
             .then(res=>{
                 console.log(res.data);
                 setProducts([...products, res.data])
+                e.target.reset()
             })
             .catch(err=>{
                 const errorResponse = err.response.data.errors
@@ -26,7 +27,6 @@ const ProductForm = (props) => {
                 }
                 setErrors(errorArray)
             })
-        e.target.reset()
     }
     
     return (
